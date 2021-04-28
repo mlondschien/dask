@@ -97,7 +97,7 @@ def _concat(args, ignore_index=False):
     # inconsistent dtypes in results between empty and non-empty frames.
     # Ideally this would be handled locally for each operation, but in practice
     # this seems easier. TODO: don't do this.
-    args2 = [i for i in args if len(i)]
+    args2 = [i for i in args if min(i.shape) > 0]
     return (
         args[0]
         if not args2
